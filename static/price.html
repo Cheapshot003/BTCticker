@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+    <title>Price Ticker</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0e4d7; /* Pastel peach background */
+            color: #836953; /* Soft brown text color */
+            font-family: Arial, sans-serif;
+        }
+        .price {
+            font-size: 72px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="price" hx-get="/price" hx-trigger="every 1s"></div>
+</body>
+</html>
