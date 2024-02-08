@@ -20,7 +20,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
+            margin: 1px;
             background-color: #f0e4d7;
             color: #836953; 
             font-family: Arial, sans-serif;
@@ -31,7 +31,8 @@
         .price {
             font-size: 45px;
             font-weight: bold;
-            margin: 5px 0;
+            margin: 1px 0;
+            text-align: center;
 
         }
         .dark-mode {
@@ -56,8 +57,10 @@
     </style>
 </head>
 <body>
-    <div class="price" hx-get="/price" hx-trigger="load, every 1s"></div>
-    <div class="price" hx-get="/height" hx-trigger="load, every 10s"></div>
+  <div hx-ws="connect:/data"> 
+  <div id="price" class="price">Loading...</div>
+    <div id="height" class="price">Loading..</div>
+  </div>
     <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
     <p>made with <3 by <a href="https://twitter.com/dercheapi" target="_blank">@dercheapi</a></p>
 </body>
