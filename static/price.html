@@ -12,8 +12,10 @@
             const isDarkMode = document.body.classList.contains('dark-mode');
             button.textContent = isDarkMode ? '☀️' : '🌙';
         }
+        
     </script>
-    <title>Price Ticker</title>
+    
+    <title id="tab">Price Ticker</title>
     <style>
         body {
             display: flex;
@@ -54,14 +56,23 @@
         text-decoration: none;
         transition: color 0.3s ease;
       }
+      .halving1 {
+        text-align: center;
+      }
+      p {
+        text-align: center;
+        margin: 2px;
+      }
     </style>
 </head>
 <body>
   <div hx-ws="connect:/data"> 
   <div id="price" class="price">Loading...</div>
-    <div id="height" class="price">Loading..</div>
-  </div>
-    <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
+    <div id="height" class="price">Loading...</div>
+  <div id="halving" class="halving1">Loading...</div>
     <p>made with <3 by <a href="https://twitter.com/dercheapi" target="_blank">@dercheapi</a></p>
+  </div>
+    
+  <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
 </body>
 </html>

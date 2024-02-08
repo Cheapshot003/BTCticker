@@ -13,7 +13,6 @@ connections = []
 
 # Function to send a message to all connected WebSocket clients
 async def broadcast(message: str):
-  print("NEW PRICE")
   for connection in connections:
     await connection.send_text(message)
 
@@ -25,7 +24,7 @@ async def websocket_endpoint(websocket: WebSocket):
   current_price = price.get_price()
   current_height = price.get_blockheight()
   connections.append(websocket)
-  message = f'<h1 id="price" hx-swap-oob="true" class="price">{current_price}$</h1> <h1 id="height" hx-swap-oob="true" class="price">{current_height} Blocks</h1>'
+  message = f'<h1 id="price" hx-swap-oob="true" class="price">{current_price}$</h1> <h1 id="height" hx-swap-oob="true" class="price">{current_height} Blocks</h1> <p id="halving" hx-swap-oob="true" class="halving1"> next halving in {840000 - current_height} blocks</p>'
   await websocket.send_text(message)
   try:
     while True:
@@ -45,7 +44,7 @@ async def check_for_changes():
     if current_price != last_price or current_height != last_height:
       last_price = current_price
       last_height = current_height
-      message = f'<h1 id="price" hx-swap-oob="true" class="price">{current_price}$</h1> <h1 id="height" hx-swap-oob="true" class="price">{current_height} Blocks</h1>'
+      message = f'<h1 id="price" hx-swap-oob="true" class="price">{current_price}$</h1> <h1 id="height" hx-swap-oob="true" class="price">{current_height} Blocks</h1> <p id="halving" hx-swap-oob="true"> next halving in {840000 - current_height} blocks</p>'
       await broadcast(message)
     await asyncio.sleep(0.5)  # Check every 10 seconds
 
