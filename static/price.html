@@ -12,7 +12,6 @@
             const isDarkMode = document.body.classList.contains('dark-mode');
             button.textContent = isDarkMode ? '☀️' : '🌙';
         }
-        
     </script>
     
     <title id="tab">Price Ticker</title>
@@ -66,13 +65,12 @@
     </style>
 </head>
 <body>
-  <div hx-ws="connect:/data"> 
-  <div id="price" class="price">Loading...</div>
+  <div hx-get="/data" hx-trigger="load, every 1s" hx-swap="innerHTML">
+    <div id="price" class="price">Loading...</div>
     <div id="height" class="price">Loading...</div>
-  <div id="halving" class="halving1">Loading...</div>
-    <p>made with <3 by <a href="https://twitter.com/dercheapi" target="_blank">@dercheapi</a></p>
+    <div id="halving" class="halving1">Loading...</div>
   </div>
-    
+  <p>made with <3 by <a href="https://twitter.com/dercheapi" target="_blank">@dercheapi</a></p>
   <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
 </body>
 </html>
